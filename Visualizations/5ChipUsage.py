@@ -17,20 +17,13 @@ df = pd.read_sql("""
 """, engine)
 
 
-plt.figure(figsize=(10, 6))
-ax = df.plot(kind='bar', x='UsageDescription', y='TransactionCount', legend=False, color='lightgreen')
-
-
-for p in ax.patches:
-    ax.annotate(str(int(p.get_height())), 
-                (p.get_x() + p.get_width() / 2., p.get_height()), 
-                ha='center', va='bottom')
-
+plt.figure(figsize=(10, 8))
+plt.pie(df['TransactionCount'], labels=df['UsageDescription'], autopct='%1.1f%%', 
+        startangle=90, shadow=True, explode=[0.05] * len(df), 
+        colors=plt.cm.Paired(range(len(df))))
 
 plt.title('Transaction Count by Chip Usage Type')
-plt.xlabel('Chip Usage Type')
-plt.ylabel('Number of Transactions')
-plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.axis('equal') 
 plt.tight_layout()
 
 plt.show()

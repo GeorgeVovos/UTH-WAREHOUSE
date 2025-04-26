@@ -99,7 +99,7 @@ SELECT
         WHEN u.CreditScore BETWEEN 670 AND 739 THEN 'Good (670-739)'
         WHEN u.CreditScore BETWEEN 740 AND 799 THEN 'Very Good (740-799)'
         ELSE 'Excellent (800+)'
-    END AS credit_score_range,
+    END AS CreditScoreRange,
     COUNT(DISTINCT u.UserId) AS NumberOfUsers,
     AVG(u.YearlyIncome) AS AvgIncome,
     AVG(u.TotalDebt) AS AvgDebt,
