@@ -27,7 +27,7 @@ ORDER BY d.year, d.month;
 -- Helps identify potential fraud or technical issues with specific merchant types
 SELECT 
     m.MCC,
-    COUNT(ft.TransactionId) AS total_transactions,
+    COUNT(ft.TransactionId) AS TotalTransactions,
     SUM(CASE WHEN ft.error IS NOT NULL AND ft.error != '' THEN 1 ELSE 0 END) AS error_count,
     (SUM(CASE WHEN ft.error IS NOT NULL AND ft.error != '' THEN 1 ELSE 0 END) * 100.0 / COUNT(ft.TransactionId)) AS ErrorPercentage
 FROM Fact_Transaction ft
