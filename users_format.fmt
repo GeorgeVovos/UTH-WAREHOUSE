@@ -1,0 +1,16 @@
+14.0
+14
+1       SQLCHAR       0       10      ","     1     id                    ""
+2       SQLCHAR       0       10      ","     2     current_age           ""
+3       SQLCHAR       0       10      ","     3     retirement_age        ""
+4       SQLCHAR       0       10      ","     4     birth_year            ""
+5       SQLCHAR       0       10      ","     5     birth_month           ""
+6       SQLCHAR       0       10      ","     6     gender                ""
+7       SQLCHAR       0       100     ","     7     address               ""
+8       SQLCHAR       0       20      ","     8     latitude              ""
+9       SQLCHAR       0       20      ","     9     longitude             ""
+10      SQLCHAR       0       20      ","     10    per_capita_income     ""
+11      SQLCHAR       0       20      ","     11    yearly_income         ""
+12      SQLCHAR       0       20      ","     12    total_debt            ""
+13      SQLCHAR       0       10      ","     13    credit_score          ""
+14      SQLCHAR       0       10      "\r\n"  14    num_credit_cards      "" 

@@ -1,0 +1,14 @@
+9.0
+12
+1       SQLBIGINT       0       8       ","      1     id                ""
+2       SQLDATETIME     0       8       ","      2     date              ""
+3       SQLINT          0       4       ","      3     client_id         ""
+4       SQLINT          0       4       ","      4     card_id           ""
+5       SQLCHAR         0       20      ","      5     amount            SQL_Latin1_General_CP1_CI_AS
+6       SQLCHAR         0       50      ","      6     use_chip          SQL_Latin1_General_CP1_CI_AS
+7       SQLINT          0       4       ","      7     merchant_id       ""
+8       SQLCHAR         0       100     ","      8     merchant_city     SQL_Latin1_General_CP1_CI_AS
+9       SQLCHAR         0       2       ","      9     merchant_state    SQL_Latin1_General_CP1_CI_AS
+10      SQLCHAR         0       10      ","      10    zip               SQL_Latin1_General_CP1_CI_AS
+11      SQLINT          0       4       ","      11    mcc               ""
+12      SQLCHAR         0       100     "\r\n"   12    errors            SQL_Latin1_General_CP1_CI_AS
