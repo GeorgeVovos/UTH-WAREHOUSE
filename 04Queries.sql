@@ -14,8 +14,8 @@ ORDER BY TotalAmount DESC;
 -- 2. Transaction Volume by Month
 -- Helps identify seasonal patterns in spending
 SELECT 
-    d.year,
-    d.month,
+    d.year as Year,
+    d.month as Month,
     COUNT(ft.TransactionId) AS TransactionCount,
     SUM(ft.amount) AS TotalAmount
 FROM Fact_Transaction ft
@@ -28,7 +28,7 @@ ORDER BY d.year, d.month;
 SELECT 
     m.MCC,
     COUNT(ft.TransactionId) AS TotalTransactions,
-    SUM(CASE WHEN ft.error IS NOT NULL AND ft.error != '' THEN 1 ELSE 0 END) AS error_count,
+    SUM(CASE WHEN ft.error IS NOT NULL AND ft.error != '' THEN 1 ELSE 0 END) AS ErrorCount,
     (SUM(CASE WHEN ft.error IS NOT NULL AND ft.error != '' THEN 1 ELSE 0 END) * 100.0 / COUNT(ft.TransactionId)) AS ErrorPercentage
 FROM Fact_Transaction ft
 JOIN Dim_MerchantLocation ml ON ft.MerchantLocationId = ml.MerchantLocationId
@@ -47,7 +47,7 @@ SELECT
         WHEN u.CurrentAge BETWEEN 45 AND 54 THEN '45-54'
         WHEN u.CurrentAge BETWEEN 55 AND 64 THEN '55-64'
         ELSE '65 and older'
-    END AS age_group,
+    END AS AgeGroup,
     COUNT(DISTINCT u.UserId) AS UserCount,
     COUNT(ft.TransactionId) AS TransactionCount,
     AVG(ft.amount) AS AvgTransactionAmount,
@@ -63,7 +63,7 @@ GROUP BY
         WHEN u.CurrentAge BETWEEN 55 AND 64 THEN '55-64'
         ELSE '65 and older'
     END
-ORDER BY age_group;
+ORDER BY AgeGroup;
 
 -- 5. Chip Usage Analysis
 -- Tracks adoption of different card technologies
@@ -71,7 +71,7 @@ SELECT
     cu.UsageDescription,
     COUNT(ft.TransactionId) AS TransactionCount,
     SUM(ft.amount) AS TotalAmount,
-    AVG(ft.amount) AS avg_amount
+    AVG(ft.amount) AS AvgAmount
 FROM Fact_Transaction ft
 JOIN Dim_ChipUsage cu ON ft.ChipUsageId = cu.ChipUsageId
 GROUP BY cu.UsageDescription
@@ -84,7 +84,7 @@ SELECT TOP 20
     s.StateCode,
     COUNT(ft.TransactionId) AS TransactionCount,
     SUM(ft.amount) AS TotalAmount,
-    COUNT(DISTINCT ft.UserId) AS unique_users
+    COUNT(DISTINCT ft.UserId) AS UniqueUsers
 FROM Fact_Transaction ft
 JOIN Dim_MerchantLocation ml ON ft.MerchantLocationId = ml.MerchantLocationId
 JOIN Dim_City c ON ml.CityId = c.CityId
@@ -122,7 +122,7 @@ ORDER BY AvgSpendPerUser DESC;
 -- 8. Hourly Transaction Patterns
 -- Identifies peak transaction times throughout the day
 SELECT 
-    d.hour,
+    d.hour as Hour,
     COUNT(ft.TransactionId) AS TransactionCount,
     SUM(ft.amount) AS TotalAmount,
     AVG(ft.amount) AS AvgTransactionAmount
