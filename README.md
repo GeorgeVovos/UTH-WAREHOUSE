@@ -12,3 +12,4 @@ The original transactions_data.csv is 1.3GB , a subset of it is included in this
 - Run 02CreateStoredProcs.sql to create the stored procedures that insert the data into tables
 - Run 03ExecureStoredProcsToLoadData.sql to read the .csv files and insert data into the db (use valid file path for the arguments)
 - Run any number of the queries available in 04Queries.sql
+- (Optional) - Run 05CreateETLJob.sql
