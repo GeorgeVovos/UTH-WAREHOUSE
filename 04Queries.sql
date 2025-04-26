@@ -2,13 +2,11 @@
 -- Identifies your highest value customers
 SELECT TOP 10
     u.UserId,
-    u.YearlyIncome,
-    u.CreditScore,
     COUNT(ft.TransactionId) AS TransactionCount,
     SUM(ft.amount) AS TotalAmount
 FROM Dim_User u
 JOIN Fact_Transaction ft ON u.UserId = ft.UserId
-GROUP BY u.UserId, u.YearlyIncome, u.CreditScore
+GROUP BY u.UserId
 ORDER BY TotalAmount DESC;
 
 -- 2. Transaction Volume by Month
