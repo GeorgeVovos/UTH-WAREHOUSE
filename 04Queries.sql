@@ -1,5 +1,5 @@
 -- 1. Top 10 Users by Total Transaction Amount
--- This query identifies your highest value customers
+-- Identifies your highest value customers
 SELECT TOP 10
     u.UserId,
     u.YearlyIncome,
